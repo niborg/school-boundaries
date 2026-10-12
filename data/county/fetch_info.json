@@ -1,0 +1,11 @@
+{
+  "fetched_at": "2026-10-12T04:01:12+00:00",
+  "source": "https://public.gis.lacounty.gov/public/rest/services/LACounty_Cache/LACounty_Parcel/MapServer/0/query",
+  "where": "Roll_LandBaseYear >= '2023' AND UseCode IN ('0100','0101','0103','0104')",
+  "band_ft": 1400,
+  "parcels": {
+    "south_pasadena": 254,
+    "palos_verdes": 441,
+    "la_canada": 117
+  }
+}

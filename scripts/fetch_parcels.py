@@ -1,36 +1,39 @@
-"""Download the parcel records directly from the LA County Assessor's public GIS service.
-
-This is the step the original analysis could NOT do directly (see README,
-"How the published numbers were produced"). Running it lets you rebuild every
-number from the county's own data, and adds square footage so you can check
-whether house size explains the gap.
-
-NOTE: this script was written but not run by its author, because the
-environment it was written in could not reach the county server. Expect to
-fix small things on first run.
+"""Download the parcel records from the LA County Assessor's public GIS service.
 
 Usage:
-    python scripts/fetch_parcels.py --width 1300
-    python scripts/analyze.py --source fetched
+    python scripts/fetch_parcels.py            # strip of 1,300 ft (+100 ft margin) on each side
+    python scripts/analyze.py
+
+Writes data/county/<pair>.csv (one row per parcel, county field names) and
+data/county/fetch_info.json (when and how the records were pulled). The county
+updates the roll as homes sell, so a later run will return a slightly
+different set of homes; the committed files are the ones the results use.
 """
 import argparse
 import csv
 import json
 import os
 import time
+from datetime import datetime, timezone
 
 import requests
-from shapely.geometry import mapping
 
-from common import DATA, PAIRS, load_boundary, shared_border
+from common import DATA, PAIRS, SFR_USE_CODES, load_boundary, shared_border
 
 URL = ("https://public.gis.lacounty.gov/public/rest/services/"
        "LACounty_Cache/LACounty_Parcel/MapServer/0/query")
-FIELDS = ["AIN", "LAT_LON", "UseCode", "Roll_LandValue", "Roll_ImpValue",
-          "Roll_LandBaseYear", "Roll_ImpBaseYear", "SQFTmain1", "YearBuilt1",
-          "Bedrooms1", "Bathrooms1"]
-WHERE = ("Roll_LandBaseYear >= '2023' AND "
-         "UseCode IN ('0100','0101','0103','0104')")
+FIELDS = ["AIN", "CENTER_LAT", "CENTER_LON", "UseCode", "TaxRateCity", "TaxRateArea",
+          "Roll_Year", "Roll_LandValue", "Roll_ImpValue", "Roll_LandBaseYear", "Roll_ImpBaseYear",
+          "SQFTmain1", "SQFTmain2", "YearBuilt1", "Bedrooms1", "Bathrooms1",
+          "Shape.STArea()"]
+# Shape.STArea() is the parcel's area in square feet (the layer is stored in
+# EPSG:2229); it is written out as LotAreaSqft.
+COLUMNS = [f if f != "Shape.STArea()" else "LotAreaSqft" for f in FIELDS]
+WHERE = ("Roll_LandBaseYear >= '2023' AND UseCode IN ({})"
+         .format(",".join(f"'{c}'" for c in sorted(SFR_USE_CODES))))
+# Query a little beyond the widest strip analyzed, so that simplifying the
+# query polygon cannot clip parcels near the outer edge.
+MARGIN_FT = 100
 
 
 def esri_polygon(poly):
@@ -76,22 +79,34 @@ def query(polygon):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--width", type=float, default=1300,
-                    help="strip width in feet on each side of the line")
+                    help="widest strip analyzed, in feet on each side of the line")
     args = ap.parse_args()
+
+    out_dir = os.path.join(DATA, "county")
+    os.makedirs(out_dir, exist_ok=True)
+    info = {"fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+            "source": URL, "where": WHERE, "band_ft": args.width + MARGIN_FT, "parcels": {}}
 
     for pair, cfg in PAIRS.items():
         A, B = load_boundary(cfg["a"][1]), load_boundary(cfg["b"][1])
         city = load_boundary(cfg["city"]) if cfg["city"] else None
-        band = shared_border(A, B, city).buffer(args.width)
-        rows = query(band)
-        out_dir = os.path.join(DATA, "fetched", pair)
-        os.makedirs(out_dir, exist_ok=True)
-        path = os.path.join(out_dir, "parcels.csv")
+        band = shared_border(A, B, city).buffer(args.width + MARGIN_FT)
+        rows = {r["AIN"]: r for r in query(band)}  # a parcel can appear once per ring
+        path = os.path.join(out_dir, f"{pair}.csv")
         with open(path, "w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=FIELDS)
-            w.writeheader()
-            w.writerows(rows)
+            w = csv.writer(f)
+            w.writerow(COLUMNS)
+            for ain in sorted(rows):
+                r = rows[ain]
+                area = r["Shape.STArea()"]
+                r["Shape.STArea()"] = round(area) if area else ""
+                w.writerow(["" if r[k] is None else str(r[k]).strip() for k in FIELDS])
+        info["parcels"][pair] = len(rows)
         print(f"{pair}: {len(rows)} parcels -> {path}")
+
+    with open(os.path.join(out_dir, "fetch_info.json"), "w") as f:
+        json.dump(info, f, indent=2)
+        f.write("\n")
 
 
 if __name__ == "__main__":

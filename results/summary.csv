@@ -1,13 +1,31 @@
-pair,source,width_ft,side_a,n_a,median_a,side_b,n_b,median_b,gap_dollars,gap_pct,on_published_map
-south_pasadena,transcribed,500,South Pasadena Unified,27,1697931,Los Angeles Unified,40,1132390,565541,49.9,False
-south_pasadena,transcribed,600,South Pasadena Unified,35,1716660,Los Angeles Unified,47,1154000,562660,48.8,False
-south_pasadena,transcribed,800,South Pasadena Unified,51,1734000,Los Angeles Unified,65,1154000,580000,50.3,True
-palos_verdes,transcribed,500,Palos Verdes Peninsula Unified,49,1744200,Los Angeles Unified,110,1302800,441400,33.9,False
-palos_verdes,transcribed,600,Palos Verdes Peninsula Unified,56,1751850,Los Angeles Unified,128,1300000,451850,34.8,False
-palos_verdes,transcribed,800,Palos Verdes Peninsula Unified,77,1759500,Los Angeles Unified,167,1300000,459500,35.3,True
-la_canada,transcribed,500,La Cañada Unified,16,2453079,Glendale Unified,18,2451182,1897,0.1,False
-la_canada,transcribed,600,La Cañada Unified,17,2307240,Glendale Unified,19,2405404,-98164,-4.1,False
-la_canada,transcribed,800,La Cañada Unified,21,3121200,Glendale Unified,27,2299283,821917,35.7,False
-la_canada,transcribed,1000,La Cañada Unified,27,2939544,Glendale Unified,32,2322642,616902,26.6,False
-la_canada,transcribed,1200,La Cañada Unified,35,2598918,Glendale Unified,44,2064946,533972,25.9,False
-la_canada,transcribed,1300,La Cañada Unified,37,2598918,Glendale Unified,47,2044620,554298,27.1,True
+pair,variant,width_ft,side_a,side_b,n_a,n_b,median_a,median_b,gap_dollars,gap_pct,gap_pct_lo,gap_pct_hi,median_home_sqft_a,median_home_sqft_b,median_lot_sqft_a,median_lot_sqft_b,adj_home_pct,adj_home_pct_lo,adj_home_pct_hi,adj_home_lot_pct,adj_home_lot_pct_lo,adj_home_lot_pct_hi,on_map
+south_pasadena,all,500,South Pasadena Unified,Los Angeles Unified,28,44,1663359,1105390,557969,50.5,15.9,84.8,1644,1386,7498,6624,31.4,16.8,47.8,29.5,15.1,45.7,False
+south_pasadena,all,600,South Pasadena Unified,Los Angeles Unified,36,51,1715080,1153620,561460,48.7,25.7,85.3,1662,1499,7608,6436,38.1,23.6,54.3,33.7,19.5,49.5,False
+south_pasadena,all,800,South Pasadena Unified,Los Angeles Unified,52,69,1728450,1153620,574830,49.8,37.0,87.5,1846,1499,8230,6373,45.6,32.1,60.4,36.4,23.2,51.1,True
+south_pasadena,all,1000,South Pasadena Unified,Los Angeles Unified,68,87,1719780,1173000,546780,46.6,29.3,76.4,1862,1565,8104,6503,40.5,28.5,53.6,31.8,20.1,44.5,False
+south_pasadena,all,1200,South Pasadena Unified,Los Angeles Unified,84,104,1740936,1169124,571812,48.9,34.6,76.1,1843,1543,8104,6486,42.3,31.2,54.3,32.8,22.5,44.0,False
+south_pasadena,all,1300,South Pasadena Unified,Los Angeles Unified,89,121,1747871,1173000,574871,49.0,34.9,74.8,1865,1540,8132,6426,41.9,31.1,53.6,34.2,23.9,45.4,False
+palos_verdes,all,500,Palos Verdes Peninsula Unified,Los Angeles Unified,49,112,1744200,1300000,444200,34.2,21.5,46.1,2352,1958,14046,7490,16.1,3.2,30.7,9.4,-6.3,27.8,False
+palos_verdes,all,600,Palos Verdes Peninsula Unified,Los Angeles Unified,56,131,1751850,1275510,476340,37.3,22.4,47.3,2292,1944,14270,7594,19.2,7.2,32.6,13.3,-1.7,30.5,False
+palos_verdes,all,800,Palos Verdes Peninsula Unified,Los Angeles Unified,77,171,1759500,1294672,464828,35.9,24.0,47.5,2306,1892,14493,7376,20.4,9.1,32.9,15.2,0.9,31.5,False
+palos_verdes,all,1000,Palos Verdes Peninsula Unified,Los Angeles Unified,91,201,1799807,1285000,514807,40.1,30.6,50.1,2352,1864,14942,7253,22.6,11.9,34.4,16.2,2.6,31.5,False
+palos_verdes,all,1200,Palos Verdes Peninsula Unified,Los Angeles Unified,110,247,1836305,1254347,581958,46.4,35.6,54.8,2340,1849,14920,7286,26.6,16.3,37.9,19.0,6.2,33.3,False
+palos_verdes,all,1300,Palos Verdes Peninsula Unified,Los Angeles Unified,112,265,1859714,1250000,609714,48.8,37.4,55.6,2370,1849,14920,7311,27.0,16.9,38.0,19.9,7.2,34.0,False
+palos_verdes,excluding Eastview,500,Palos Verdes Peninsula Unified,Los Angeles Unified,49,62,1744200,1207994,536206,44.4,29.2,64.0,2352,2098,14046,6945,25.7,9.2,44.7,15.5,-6.5,42.6,False
+palos_verdes,excluding Eastview,600,Palos Verdes Peninsula Unified,Los Angeles Unified,56,71,1751850,1203923,547927,45.5,30.4,65.0,2292,2048,14270,6871,28.8,13.3,46.5,20.0,-1.8,46.6,False
+palos_verdes,excluding Eastview,800,Palos Verdes Peninsula Unified,Los Angeles Unified,77,92,1759500,1222010,537490,44.0,30.3,61.0,2306,1958,14493,7028,26.8,13.3,42.1,21.8,2.1,45.2,True
+palos_verdes,excluding Eastview,1000,Palos Verdes Peninsula Unified,Los Angeles Unified,91,108,1799807,1207994,591813,49.0,37.5,67.9,2352,1920,14942,6945,28.1,15.3,42.2,22.5,4.4,43.7,False
+palos_verdes,excluding Eastview,1200,Palos Verdes Peninsula Unified,Los Angeles Unified,110,140,1836305,1129916,706388,62.5,45.7,75.3,2340,1862,14920,7136,31.0,19.2,44.1,23.1,7.1,41.4,False
+palos_verdes,excluding Eastview,1300,Palos Verdes Peninsula Unified,Los Angeles Unified,112,150,1859714,1136700,723014,63.6,45.4,74.6,2370,1862,14920,7181,31.8,20.1,44.5,24.7,9.1,42.6,False
+palos_verdes,side B = Eastview only,500,Palos Verdes Peninsula Unified,Los Angeles Unified,49,50,1744200,1439576,304624,21.2,9.6,37.0,2352,1864,14046,8256,7.7,-2.5,18.9,4.9,-8.9,20.8,False
+palos_verdes,side B = Eastview only,600,Palos Verdes Peninsula Unified,Los Angeles Unified,56,60,1751850,1435415,316435,22.0,10.9,38.1,2292,1864,14270,8359,11.0,1.3,21.7,8.1,-4.8,22.8,False
+palos_verdes,side B = Eastview only,800,Palos Verdes Peninsula Unified,Los Angeles Unified,77,79,1759500,1383000,376500,27.2,14.7,40.2,2306,1864,14493,8002,11.2,0.4,23.0,8.6,-4.4,23.4,False
+palos_verdes,side B = Eastview only,1000,Palos Verdes Peninsula Unified,Los Angeles Unified,91,93,1799807,1350000,449807,33.3,20.5,42.3,2352,1849,14942,7959,13.7,3.0,25.6,9.6,-2.8,23.6,False
+palos_verdes,side B = Eastview only,1200,Palos Verdes Peninsula Unified,Los Angeles Unified,110,107,1836305,1337120,499185,37.3,25.8,44.5,2340,1842,14920,7692,17.2,6.4,29.1,12.9,0.4,27.1,False
+palos_verdes,side B = Eastview only,1300,Palos Verdes Peninsula Unified,Los Angeles Unified,112,115,1859714,1337120,522594,39.1,26.3,45.4,2370,1837,14920,7692,16.6,6.0,28.1,12.6,0.2,26.6,False
+la_canada,all,500,La Cañada Unified,Glendale Unified,18,16,2453079,2451182,1897,0.1,-31.7,59.3,2129,2177,11697,17520,7.0,-18.2,39.9,11.8,-8.9,37.2,False
+la_canada,all,600,La Cañada Unified,Glendale Unified,19,17,2307240,2405404,-98164,-4.1,-29.6,60.5,1994,2170,11693,17299,7.3,-17.0,38.6,12.7,-7.0,36.6,False
+la_canada,all,800,La Cañada Unified,Glendale Unified,23,26,3121200,2322642,798558,34.4,-15.0,75.0,2264,2165,11716,15226,7.9,-10.9,30.5,9.9,-6.1,28.7,False
+la_canada,all,1000,La Cañada Unified,Glendale Unified,29,31,2939544,2299283,640261,27.8,-11.8,67.4,2373,2170,11716,15147,9.5,-7.0,28.9,9.4,-6.5,28.0,False
+la_canada,all,1200,La Cañada Unified,Glendale Unified,37,42,2598918,2064946,533972,25.9,-5.4,64.9,2346,2002,11849,14764,9.3,-5.2,26.0,9.2,-5.1,25.7,False
+la_canada,all,1300,La Cañada Unified,Glendale Unified,39,45,2598918,2044620,554298,27.1,-5.1,64.7,2349,2020,12360,14452,13.3,-2.8,32.2,13.2,-2.5,31.5,True
