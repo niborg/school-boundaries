@@ -1,0 +1,13 @@
+pair,source,width_ft,side_a,n_a,median_a,side_b,n_b,median_b,gap_dollars,gap_pct,on_published_map
+south_pasadena,transcribed,500,South Pasadena Unified,27,1697931,Los Angeles Unified,40,1132390,565541,49.9,False
+south_pasadena,transcribed,600,South Pasadena Unified,35,1716660,Los Angeles Unified,47,1154000,562660,48.8,False
+south_pasadena,transcribed,800,South Pasadena Unified,51,1734000,Los Angeles Unified,65,1154000,580000,50.3,True
+palos_verdes,transcribed,500,Palos Verdes Peninsula Unified,49,1744200,Los Angeles Unified,110,1302800,441400,33.9,False
+palos_verdes,transcribed,600,Palos Verdes Peninsula Unified,56,1751850,Los Angeles Unified,128,1300000,451850,34.8,False
+palos_verdes,transcribed,800,Palos Verdes Peninsula Unified,77,1759500,Los Angeles Unified,167,1300000,459500,35.3,True
+la_canada,transcribed,500,La Cañada Unified,16,2453079,Glendale Unified,18,2451182,1897,0.1,False
+la_canada,transcribed,600,La Cañada Unified,17,2307240,Glendale Unified,19,2405404,-98164,-4.1,False
+la_canada,transcribed,800,La Cañada Unified,21,3121200,Glendale Unified,27,2299283,821917,35.7,False
+la_canada,transcribed,1000,La Cañada Unified,27,2939544,Glendale Unified,32,2322642,616902,26.6,False
+la_canada,transcribed,1200,La Cañada Unified,35,2598918,Glendale Unified,44,2064946,533972,25.9,False
+la_canada,transcribed,1300,La Cañada Unified,37,2598918,Glendale Unified,47,2044620,554298,27.1,True

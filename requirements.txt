@@ -1,0 +1,4 @@
+pyproj>=3.6
+shapely>=2.0
+matplotlib>=3.7
+requests>=2.31  # only for fetch_parcels.py
