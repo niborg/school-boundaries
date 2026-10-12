@@ -59,6 +59,29 @@ shrink the gap. If the transfer has taken effect, the 2012 line used here no
 longer separates the two districts. For both reasons, the La Cañada numbers
 should not be read as the value of being inside La Cañada Unified.
 
+## Maps
+
+Each dot is one home, colored by its assessed value. The dark line is the
+district boundary and the shaded bands are the strip on each side. Click a map
+to see it full size.
+
+### South Pasadena Unified vs Los Angeles Unified
+
+[![Homes within 800 feet of the South Pasadena–LAUSD line](maps/south_pasadena.png)](maps/south_pasadena.png)
+
+### Palos Verdes Peninsula Unified vs Los Angeles Unified
+
+Squares are Eastview homes, shown but not counted in the LAUSD median.
+
+[![Homes within 800 feet of the Palos Verdes Peninsula–LAUSD line](maps/palos_verdes.png)](maps/palos_verdes.png)
+
+### La Cañada Unified vs Glendale Unified (Sagebrush)
+
+The dashed line is the La Cañada Flintridge city limit; only homes inside it
+are counted.
+
+[![La Cañada Flintridge homes on each side of the school line](maps/la_canada.png)](maps/la_canada.png)
+
 ## What's here
 
 ```
